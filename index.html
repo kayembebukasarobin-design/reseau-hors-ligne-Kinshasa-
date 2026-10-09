@@ -3,93 +3,133 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Réseau hors ligne</title>
+    <title>Réseau Hors Ligne | Kinshasa</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="topbar">
+    <div class="shell">
+      <header class="topbar card">
         <div>
-          <p class="eyebrow">Centre de gestion</p>
+          <p class="eyebrow">Infrastructure locale</p>
           <h1>Réseau hors ligne</h1>
         </div>
-        <div class="status-pill" id="networkStatus">
-          <span class="dot"></span>
-          Connecté
+
+        <div class="status-group">
+          <div class="status-pill online" id="statusPill">
+            <span class="status-dot"></span>
+            <span id="statusText">Opérationnel</span>
+          </div>
+          <button id="refreshBtn" class="ghost-btn">Actualiser</button>
         </div>
       </header>
 
       <main class="dashboard">
         <section class="hero card">
           <div>
-            <p class="label">État du r��seau</p>
-            <h2 id="heroTitle">Infrastructure locale stable</h2>
+            <p class="label">Centre de supervision</p>
+            <h2 id="heroTitle">Réseau principal stable</h2>
             <p id="heroText">
-              Tous les services internes répondent normalement.
+              Les services internes, équipements et points d’accès répondent normalement.
             </p>
           </div>
-          <button id="runDiagnostic" class="primary-btn">Lancer le diagnostic</button>
+          <button id="diagnosticBtn" class="primary-btn">Lancer le diagnostic</button>
         </section>
 
         <section class="metrics">
           <article class="card metric">
-            <span class="metric-label">Wi‑Fi</span>
-            <strong id="wifiMetric">95%</strong>
-            <small>Signal</small>
+            <span>Signal Wi‑Fi</span>
+            <strong id="wifiValue">96%</strong>
+            <small>Excellent</small>
           </article>
           <article class="card metric">
-            <span class="metric-label">LAN</span>
-            <strong id="lanMetric">14 ms</strong>
-            <small>Latence</small>
+            <span>Latence LAN</span>
+            <strong id="latencyValue">12 ms</strong>
+            <small>Très rapide</small>
           </article>
           <article class="card metric">
-            <span class="metric-label">DNS</span>
-            <strong id="dnsMetric">OK</strong>
-            <small>Résolution</small>
+            <span>DNS / résolution</span>
+            <strong id="dnsValue">OK</strong>
+            <small>Stable</small>
           </article>
           <article class="card metric">
-            <span class="metric-label">Serveurs</span>
-            <strong id="serverMetric">3/3</strong>
-            <small>Disponibles</small>
+            <span>Équipements</span>
+            <strong id="deviceValue">7/7</strong>
+            <small>Connectés</small>
           </article>
         </section>
 
         <section class="content-grid">
           <article class="card panel">
             <div class="panel-header">
-              <h3>Actions rapides</h3>
+              <h3>Topologie réseau</h3>
+              <span class="badge">Local</span>
             </div>
-            <div class="action-list">
-              <button class="action-btn" data-action="scan">Scanner les appareils</button>
-              <button class="action-btn" data-action="restart">Redémarrer le routeur</button>
-              <button class="action-btn" data-action="refresh">Actualiser la table ARP</button>
-              <button class="action-btn" data-action="lock">Verrouiller le réseau</button>
+
+            <div class="topology">
+              <div class="node router">
+                <span class="node-name">Routeur</span>
+                <span class="node-state">Online</span>
+              </div>
+              <div class="node switch">
+                <span class="node-name">Switch</span>
+                <span class="node-state">Stable</span>
+              </div>
+              <div class="node wifi">
+                <span class="node-name">AP Wi‑Fi</span>
+                <span class="node-state">4 SSID</span>
+              </div>
+              <div class="node server">
+                <span class="node-name">Serveur</span>
+                <span class="node-state">Actif</span>
+              </div>
+              <div class="node printer">
+                <span class="node-name">Imprimante</span>
+                <span class="node-state">Prête</span>
+              </div>
             </div>
           </article>
 
           <article class="card panel">
             <div class="panel-header">
-              <h3>Équipements</h3>
+              <h3>Actions rapides</h3>
             </div>
-            <ul class="device-list">
-              <li><span>Router principal</span><b>En ligne</b></li>
-              <li><span>Switch bureau</span><b>Stable</b></li>
-              <li><span>Point d'accès</span><b>Bonne qualité</b></li>
-              <li><span>Imprimante réseau</span><b>Disponible</b></li>
-            </ul>
+            <div class="action-list">
+              <button class="action-btn" data-action="scan">Scanner les appareils</button>
+              <button class="action-btn" data-action="restart">Redémarrer routeur</button>
+              <button class="action-btn" data-action="refresh">Rafraîchir ARP</button>
+              <button class="action-btn" data-action="security">Sécuriser accès</button>
+              <button class="action-btn" data-action="backup">Sauvegarde réseau</button>
+              <button class="action-btn" data-action="audit">Audit complet</button>
+            </div>
           </article>
         </section>
 
-        <section class="card panel log-panel">
-          <div class="panel-header">
-            <h3>Journal système</h3>
-            <button id="clearLog" class="small-btn">Effacer</button>
-          </div>
-          <ul id="systemLog" class="log-list">
-            <li>Vérification de la bande passante lancée.</li>
-            <li>Contrôle du routeur réussi.</li>
-            <li>Services internes synchronisés.</li>
-          </ul>
+        <section class="bottom-grid">
+          <article class="card panel">
+            <div class="panel-header">
+              <h3>Équipements</h3>
+            </div>
+            <ul class="device-list">
+              <li><span>Routeur principal</span><b>En ligne</b></li>
+              <li><span>Switch bureau</span><b>Normal</b></li>
+              <li><span>Point d’accès</span><b>Bonne qualité</b></li>
+              <li><span>Serveur local</span><b>Disponible</b></li>
+              <li><span>NAS / stockage</span><b>Synchronisé</b></li>
+            </ul>
+          </article>
+
+          <article class="card panel log-panel">
+            <div class="panel-header">
+              <h3>Journal système</h3>
+              <button id="clearLogBtn" class="small-btn">Effacer</button>
+            </div>
+            <ul id="logList" class="log-list">
+              <li>Vérification automatique lancée.</li>
+              <li>Contrôle du routeur réussi.</li>
+              <li>Services internes répondent normalement.</li>
+              <li>Connexion locale stable à 96%.</li>
+            </ul>
+          </article>
         </section>
       </main>
     </div>
