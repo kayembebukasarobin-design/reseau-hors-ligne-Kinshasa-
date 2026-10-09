@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réseau hors ligne</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Centre de gestion</p>
+          <h1>Réseau hors ligne</h1>
+        </div>
+        <div class="status-pill" id="networkStatus">
+          <span class="dot"></span>
+          Connecté
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="hero card">
+          <div>
+            <p class="label">État du r��seau</p>
+            <h2 id="heroTitle">Infrastructure locale stable</h2>
+            <p id="heroText">
+              Tous les services internes répondent normalement.
+            </p>
+          </div>
+          <button id="runDiagnostic" class="primary-btn">Lancer le diagnostic</button>
+        </section>
+
+        <section class="metrics">
+          <article class="card metric">
+            <span class="metric-label">Wi‑Fi</span>
+            <strong id="wifiMetric">95%</strong>
+            <small>Signal</small>
+          </article>
+          <article class="card metric">
+            <span class="metric-label">LAN</span>
+            <strong id="lanMetric">14 ms</strong>
+            <small>Latence</small>
+          </article>
+          <article class="card metric">
+            <span class="metric-label">DNS</span>
+            <strong id="dnsMetric">OK</strong>
+            <small>Résolution</small>
+          </article>
+          <article class="card metric">
+            <span class="metric-label">Serveurs</span>
+            <strong id="serverMetric">3/3</strong>
+            <small>Disponibles</small>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="card panel">
+            <div class="panel-header">
+              <h3>Actions rapides</h3>
+            </div>
+            <div class="action-list">
+              <button class="action-btn" data-action="scan">Scanner les appareils</button>
+              <button class="action-btn" data-action="restart">Redémarrer le routeur</button>
+              <button class="action-btn" data-action="refresh">Actualiser la table ARP</button>
+              <button class="action-btn" data-action="lock">Verrouiller le réseau</button>
+            </div>
+          </article>
+
+          <article class="card panel">
+            <div class="panel-header">
+              <h3>Équipements</h3>
+            </div>
+            <ul class="device-list">
+              <li><span>Router principal</span><b>En ligne</b></li>
+              <li><span>Switch bureau</span><b>Stable</b></li>
+              <li><span>Point d'accès</span><b>Bonne qualité</b></li>
+              <li><span>Imprimante réseau</span><b>Disponible</b></li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="card panel log-panel">
+          <div class="panel-header">
+            <h3>Journal système</h3>
+            <button id="clearLog" class="small-btn">Effacer</button>
+          </div>
+          <ul id="systemLog" class="log-list">
+            <li>Vérification de la bande passante lancée.</li>
+            <li>Contrôle du routeur réussi.</li>
+            <li>Services internes synchronisés.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
